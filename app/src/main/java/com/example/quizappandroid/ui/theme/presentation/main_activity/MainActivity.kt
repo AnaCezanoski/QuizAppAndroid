@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.quizappandroid.R
 import com.example.quizappandroid.ui.theme.presentation.home.HomeScreen
 import com.example.quizappandroid.ui.theme.ui.QuizAppAndroidTheme
 

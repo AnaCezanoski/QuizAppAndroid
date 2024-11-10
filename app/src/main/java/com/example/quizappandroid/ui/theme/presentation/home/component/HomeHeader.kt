@@ -20,8 +20,8 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.quizappandroid.R // Use o R do seu pacote, não android.R
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
-
 
 @Preview
 @Composable
@@ -46,7 +46,7 @@ fun HomeHeader() {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
-                painterResource(id = R.drawable.baseline_arrow_back_ios_24),
+                painter = painterResource(id = R.drawable.baseline_arrow_back_ios_24),
                 contentDescription = "",
                 modifier = Modifier
                     .weight(1f)
@@ -63,7 +63,7 @@ fun HomeHeader() {
             )
 
             Icon(
-                painterResource(id = R.drawable.baseline_account_box_24),
+                painter = painterResource(id = R.drawable.baseline_account_box_24),
                 contentDescription = "",
                 modifier = Modifier
                     .weight(1f)
