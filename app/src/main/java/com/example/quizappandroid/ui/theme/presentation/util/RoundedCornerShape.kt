@@ -1,4 +1,4 @@
-package com.example.quizappandroid.ui.theme.presentation.common
+package com.example.quizappandroid.ui.theme.presentation.util
 
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.ui.unit.Dp

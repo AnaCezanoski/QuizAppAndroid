@@ -27,6 +27,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.quizappandroid.ui.theme.presentation.common.AppDropDownMenu
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.SmallSpacerHeight
 
@@ -34,7 +35,7 @@ import com.example.quizappandroid.ui.theme.presentation.util.Dimens.SmallSpacerH
 @Composable
 fun Prev() {
     val list = listOf("Item 1", "Item 2")
-    AppDropDownMenu(menuName = "Drop Down", menuList = list)
+    AppDropDownMenu(menuName = "Drop Down", menuList = list, text = "Item 1", onDropDownClick = {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,9 +43,10 @@ fun Prev() {
 fun AppDropDownMenu(
     menuName: String,
     menuList: List<String>,
+    text : String,
+    onDropDownClick : (String) -> Unit
 ) {
     var isExpanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf(menuList[0]) }
 
     Column(
         modifier = Modifier
@@ -68,7 +70,7 @@ fun AppDropDownMenu(
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth(),
-                value = selectedText,
+                value = text,
                 onValueChange = {},
                 readOnly = true,
                 trailingIcon = {
@@ -96,7 +98,7 @@ fun AppDropDownMenu(
                     DropdownMenuItem(
                         text = { Text(text = text, color = colorResource(id = R.color.holo_blue_light)) },
                         onClick = {
-                            selectedText = menuList[index]
+                            onDropDownClick(menuList[index])
                             isExpanded = false
                         },
                         contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding

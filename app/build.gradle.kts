@@ -45,6 +45,11 @@ android {
         compose = true
     }
 }
+configurations.all {
+    resolutionStrategy {
+        force("org.jetbrains.kotlinx:kotlinx-metadata-jvm:5.0.0")
+    }
+}
 
 dependencies {
     // AndroidX Libraries
@@ -65,7 +70,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
     // Splash API
     implementation("androidx.core:core-splashscreen:1.0.1")
 
@@ -73,12 +77,15 @@ dependencies {
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    // Dagger Hilt (Atualizado para versões mais recentes)
+     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+//    implementation ("com.google.dagger:hilt-android:2.49")
+//    kapt("com.google.dagger:hilt-compiler:2.45")
+//    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
 
-    // Retrofit (Não há atualizações significativas nas versões atuais)
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 

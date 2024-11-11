@@ -1,6 +1,7 @@
 package com.example.quizappandroid.ui.theme.presentation.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,21 +20,22 @@ import androidx.compose.ui.unit.Dp
 import com.example.quizappandroid.R
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 
-@Preview
-@Composable
-fun PrevBB() {
-    ButtonBox(text = "Generate Quiz", padding = Dimens.SmallPadding)
-}
-
+//@Preview
+//@Composable
+//fun PrevBB() {
+//    ButtonBox(text = "Generate Quiz", padding = Dimens.SmallPadding)
+//}
 @Composable
 fun ButtonBox(
     text: String,
     padding: Dp,
+    onButtonClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .padding(padding)
             .fillMaxWidth()
+            .clickable { onButtonClick() }
             .height(Dimens.MediumBoxHeight)
             .clip(RoundedCornerShape(Dimens.LargeCornerRadius))
             .background(colorResource(id = R.color.teal_200)),

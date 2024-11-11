@@ -20,7 +20,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quizappandroid.R // Use o R do seu pacote, não android.R
+import com.example.quizappandroid.R
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 
 @Preview
