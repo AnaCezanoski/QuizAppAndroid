@@ -2,11 +2,14 @@ package com.example.quizappandroid.ui.theme.presentation.quiz.component
 
 import android.R.attr.resource
 import android.util.Log
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.quizappandroid.ui.theme.commom.Resource
+import com.example.quizappandroid.ui.theme.domain.model.Quiz
 import com.example.quizappandroid.ui.theme.domain.usecases.GetQuizzesUseCases
 import com.example.quizappandroid.ui.theme.presentation.quiz.EventQuizScreen
+import com.example.quizappandroid.ui.theme.presentation.quiz.QuizState
 import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -31,16 +34,12 @@ class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizz
         viewModelScope.launch {
             getQuizzesUseCases(amount, category, difficulty, type).collect { resource ->
                 when (resource) {
-                    is Resource.Loading -> {
-                        Log.d("quiz", "Loading")
-                        _quizList.value = StateQuizScreen(isLoading = true)
+                    is Resource.Loading -> { _quizList.value = StateQuizScreen(isLoading = true)
                     }
 
                     is Resource.Success -> {
-                        for (quiz in resource.data!!) {
-                            Log.d("quiz", quiz.toString())
-                        }
-                        _quizList.value = StateQuizScreen(data = resource.data)
+                        val listOfQuizState : List<QuizState> = getListOfQuizState(resource.data)
+                        _quizList.value = StateQuizScreen(quizState = listOfQuizState)
                     }
 
                     is Resource.Error -> {
@@ -50,5 +49,20 @@ class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizz
                 }
             }
         }
+    }
+    private fun getListOfQuizState(data: List<Quiz>?): List<QuizState> {
+        val listOfQuizState = mutableStateListOf<QuizState>()
+
+        for (quiz in data!!) {
+
+            val shuffledOptions = mutableListOf<String>().apply {
+                add(quiz.correct_answer)
+                addAll(quiz.incorrect_answers)
+                shuffle()
+            }
+
+            listOfQuizState.add((QuizState(quiz, shuffledOptions, -1)))
+        }
+        return listOfQuizState
     }
 }

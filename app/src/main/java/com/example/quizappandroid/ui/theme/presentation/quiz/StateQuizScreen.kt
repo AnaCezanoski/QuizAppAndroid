@@ -4,6 +4,12 @@ import com.example.quizappandroid.ui.theme.domain.model.Quiz
 
 data class StateQuizScreen(
     val isLoading : Boolean = false,
-    val data: List<Quiz> ? = listOf(),
+    val quizState: List<QuizState> = emptyList(),
     val error: String = ""
+)
+
+data class QuizState(
+    val quiz : Quiz ? = null,
+    val shuffledOptions : List<String> = emptyList(),
+    val selectedOptions : Int ? = -1
 )
