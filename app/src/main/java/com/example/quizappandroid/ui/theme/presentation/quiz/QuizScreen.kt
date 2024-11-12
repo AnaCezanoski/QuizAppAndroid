@@ -121,8 +121,10 @@ fun QuizScreen(
                 HorizontalPager(state = pageState) { index ->
                     QuizInterface(
                         modifier = Modifier.weight(1f),
-                        onOptionSelected = {},
                         quizState = state.quizState[index],
+                        onOptionSelected = {selectedIndex ->
+                            event(EventQuizScreen.SetOptionSelected(index, selectedIndex))
+                        },
                         qNumber = index + 1
                     )
                 }
@@ -151,19 +153,32 @@ fun QuizScreen(
                             scope.launch { pageState.animateScrollToPage(pageState.currentPage - 1) }
                         }
                     }
+                    else{
+                        ButtonBox(
+                            text = "",
+                            fraction = 0.43f,
+                            fontSize = Dimens.SmallTextSize,
+                            borderColor = colorResource(id = R.color.holo_blue_light),
+                            containerColor = colorResource(id = R.color.holo_blue_light),
+                        ) { }
+                    }
 
                     ButtonBox(
                         text = buttonText[1],
                         padding = Dimens.SmallPadding,
                         borderColor = colorResource(id = R.color.holo_purple),
-                        containerColor = colorResource(id = R.color.holo_blue_dark),
+                        containerColor = if(pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_purple)
+                                         else colorResource(id = R.color.holo_blue_dark),
                         fraction = 1f,
                         textColor = colorResource(id = R.color.white),
                         fontSize = Dimens.SmallTextSize
                     ) {
                         if (pageState.currentPage == state.quizState.size - 1) {
                             // Ação para o botão "Submit"
-                        } else {
+                            Log.d("score", state.score.toString())
+
+                        }
+                        else {
                             scope.launch { pageState.animateScrollToPage(pageState.currentPage + 1) }
                         }
                     }

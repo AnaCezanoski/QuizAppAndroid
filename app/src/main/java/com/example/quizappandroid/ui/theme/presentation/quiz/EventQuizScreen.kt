@@ -6,4 +6,6 @@ sealed class EventQuizScreen {
         val category : Int,
         val difficulty : String,
         val type : String) : EventQuizScreen()
+
+    data class SetOptionSelected(val quizStateIndex: Int, val selectedOption: Int): EventQuizScreen()
 }

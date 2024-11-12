@@ -1,6 +1,5 @@
 package com.example.quizappandroid.ui.theme.presentation.quiz.component
 
-import android.R.attr.resource
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -13,7 +12,6 @@ import com.example.quizappandroid.ui.theme.presentation.quiz.QuizState
 import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import java.time.temporal.TemporalAmount
 import javax.inject.Inject
 
 class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizzesUseCases) : ViewModel() {
@@ -26,7 +24,42 @@ class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizz
             is EventQuizScreen.GetQuizzes -> {
                 getQuizzes(event.numOfQuizzes, event.category, event.difficulty, event.type)
             }
+            is EventQuizScreen.SetOptionSelected -> {
+                updateQuizStateList(event.quizStateIndex, event.selectedOption)
+            }
+
             else -> {}
+        }
+    }
+
+    private fun updateQuizStateList(quizStateIndex: Int, selectedOption: Int) {
+
+        val updatedQuizStateList = mutableListOf<QuizState>()
+
+        quizList.value.quizState.forEachIndexed { index, quizState ->
+            updatedQuizStateList.add(
+                if (index == quizStateIndex) {
+                    quizState.copy(selectedOptions = selectedOption)
+                }
+                else quizState
+            )
+        }
+        _quizList.value = _quizList.value.copy(quizState = updatedQuizStateList)
+
+        updateScore(_quizList.value.quizState[quizStateIndex])
+    }
+
+    private fun updateScore(quizState: QuizState) {
+        if(quizState.selectedOptions != -1){
+            val correctAnswer = quizState.quiz?.correct_answer
+            val selectedAnswer = quizState.selectedOptions?.let {
+                quizState.shuffledOptions[it].replace("&quot;", "\"").replace("&#039;", "\'")
+            }
+            Log.d("check", "$correctAnswer -> $selectedAnswer")
+            if(correctAnswer == selectedAnswer){
+                val previousScore = _quizList.value.score
+                _quizList.value = _quizList.value.copy(score = previousScore + 1)
+            }
         }
     }
 

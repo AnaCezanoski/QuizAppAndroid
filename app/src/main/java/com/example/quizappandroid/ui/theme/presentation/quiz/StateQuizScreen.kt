@@ -5,7 +5,8 @@ import com.example.quizappandroid.ui.theme.domain.model.Quiz
 data class StateQuizScreen(
     val isLoading : Boolean = false,
     val quizState: List<QuizState> = emptyList(),
-    val error: String = ""
+    val error: String = "",
+    val score: Int = 0
 )
 
 data class QuizState(
