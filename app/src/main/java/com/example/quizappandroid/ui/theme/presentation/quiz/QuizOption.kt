@@ -63,15 +63,15 @@ fun QuizOption(
     onOptionClick: () -> Unit,
     onUnselectOption: () -> Unit
 ) {
-    val optionTextColor = if (selected) colorResource(id = R.color.teal_200) else colorResource(id = com.example.quizappandroid.R.color.black)
+    val optionTextColor = if (selected) colorResource(id = R.color.holo_purple) else colorResource(id = com.example.quizappandroid.R.color.black)
     val transition = updateTransition(selected, label = "selected")
 
     val startColor = transition.animateColor(
         transitionSpec = { tween(durationMillis = DefaultDurationMillis, easing = LinearEasing) },
         label = "startColor"
     ) { selectedBox ->
-        if (selectedBox) colorResource(id = R.color.purple_200)
-        else colorResource(id = R.color.teal_200)
+        if (selectedBox) colorResource(id = R.color.purple_700)
+        else colorResource(id = R.color.holo_purple)
     }.value
 
     Box(
@@ -93,14 +93,14 @@ fun QuizOption(
                         .size(SmallCircleShape)
                         .shadow(10.dp, CircleShape, clip = true)
                         .clip(CircleShape)
-                        .background(colorResource(id = com.example.quizappandroid.R.color.purple_200)),
+                        .background(colorResource(id = com.example.quizappandroid.R.color.purple_700)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = optionNumber,
                         fontWeight = FontWeight.Bold,
                         fontSize = MediumTextSize,
-                        color = colorResource(id = com.example.quizappandroid.R.color.teal_200),
+                        color = colorResource(id = com.example.quizappandroid.R.color.holo_purple),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -124,14 +124,14 @@ fun QuizOption(
                     modifier = Modifier
                         .shadow(10.dp, CircleShape, clip = true)
                         .clip(CircleShape)
-                        .background(colorResource(id = com.example.quizappandroid.R.color.teal_200)),
+                        .background(colorResource(id = com.example.quizappandroid.R.color.holo_purple)),
                     contentAlignment = Alignment.Center
                 ) {
                     IconButton(onClick = { onUnselectOption() }) {
                         Icon(
                             painter = painterResource(id = com.example.quizappandroid.R.drawable.baseline_close_24),
                             contentDescription = "close",
-                            tint = colorResource(id = com.example.quizappandroid.R.color.purple_500)
+                            tint = colorResource(id = com.example.quizappandroid.R.color.purple_700)
                         )
                     }
                 }

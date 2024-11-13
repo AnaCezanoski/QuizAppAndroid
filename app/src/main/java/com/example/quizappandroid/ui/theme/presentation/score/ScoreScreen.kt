@@ -76,7 +76,7 @@ fun ScoreScreen(
                 Icon(
                     painter = painterResource(id = R.drawable.baseline_close_24),
                     contentDescription = "close",
-                    tint = colorResource(id = R.color.teal_200)
+                    tint = colorResource(id = R.color.holo_purple)
                 )
             }
         }
@@ -88,7 +88,7 @@ fun ScoreScreen(
                 .fillMaxWidth()
                 .height(500.dp)
                 .clip(RoundedCornerShape(Dimens.MediumCornerRadius))
-                .background(colorResource(id = R.color.teal_200)),
+                .background(colorResource(id = R.color.holo_purple)),
             contentAlignment = Alignment.Center
         ) {
             Column(

@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(color = colorResource(id = R.color.purple_700)),
+                        .background(color = colorResource(id = R.color.white)),
                     contentAlignment = Alignment.Center
                 ) {
                     SetNavGraph()

@@ -51,11 +51,11 @@ fun HomeHeader() {
                 modifier = Modifier
                     .weight(1f)
                     .size(Dimens.MediumIconSize),
-                tint = colorResource(id = R.color.teal_200)
+                tint = colorResource(id = R.color.white)
             )
             Text(
                 text = "Quiz App",
-                color = colorResource(id = R.color.teal_200),
+                color = colorResource(id = R.color.white),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.weight(3.5f),
                 textAlign = TextAlign.Center,
@@ -68,7 +68,7 @@ fun HomeHeader() {
                 modifier = Modifier
                     .weight(1f)
                     .size(Dimens.MediumIconSize),
-                tint = colorResource(id = R.color.teal_200)
+                tint = colorResource(id = R.color.white)
             )
         }
     }

@@ -57,7 +57,7 @@ fun AppDropDownMenu(
             text = menuName,
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
-            color = colorResource(id = R.color.holo_blue_light),
+            color = colorResource(id = R.color.white),
         )
 
         Spacer(modifier = Modifier.height(SmallSpacerHeight))
@@ -77,9 +77,9 @@ fun AppDropDownMenu(
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
                 },
                 colors = TextFieldDefaults.outlinedTextFieldColors (
-                    focusedTextColor = colorResource(id = R.color.holo_blue_light),
-                    unfocusedTrailingIconColor = colorResource(id = R.color.holo_purple),
-                    focusedTrailingIconColor = colorResource(id = R.color.holo_purple),
+                    focusedTextColor = colorResource(id = R.color.white),
+                    unfocusedTrailingIconColor = colorResource(id = R.color.white),
+                    focusedTrailingIconColor = colorResource(id = R.color.white),
                     focusedBorderColor = colorResource(id = R.color.holo_blue_dark),
                     unfocusedBorderColor = colorResource(id = R.color.holo_blue_dark),
                     containerColor = colorResource(id = R.color.holo_blue_dark)
@@ -89,14 +89,14 @@ fun AppDropDownMenu(
 
             DropdownMenu(
                 modifier = Modifier.background(
-                    colorResource(id = R.color.holo_purple)
+                    colorResource(id = R.color.white)
                 ),
                 expanded = isExpanded,
                 onDismissRequest = { isExpanded = false },
             ) {
                 menuList.forEachIndexed { index: Int, text: String ->
                     DropdownMenuItem(
-                        text = { Text(text = text, color = colorResource(id = R.color.holo_blue_light)) },
+                        text = { Text(text = text, color = colorResource(id = R.color.holo_blue_dark)) },
                         onClick = {
                             onDropDownClick(menuList[index])
                             isExpanded = false

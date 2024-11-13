@@ -50,9 +50,9 @@ fun ButtonBox(
     modifier: Modifier = Modifier,
     text: String,
     padding: Dp = Dimens.SmallPadding,
-    borderColor : Color = colorResource(id = R.color.teal_200),
-    containerColor : Color = colorResource(id = R.color.teal_200),
-    textColor : Color = colorResource(id = R.color.black),
+    borderColor : Color = colorResource(id = R.color.purple_700),
+    containerColor : Color = colorResource(id = R.color.purple_700),
+    textColor : Color = colorResource(id = R.color.white),
     fontSize: TextUnit = MediumTextSize,
     fraction : Float = 1f,
     onClick: () -> Unit

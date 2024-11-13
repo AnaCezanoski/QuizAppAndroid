@@ -117,7 +117,7 @@ fun QuizScreen(
                 Text(text = "Questions : $numOfQuiz")
                 Text(
                     text = quizDifficulty,
-                    color = colorResource(id = R.color.holo_blue_light)
+                    color = colorResource(id = R.color.white)
                 )
             }
 
@@ -128,7 +128,7 @@ fun QuizScreen(
                     .fillMaxWidth()
                     .height(Dimens.VerySmallViewHeight)
                     .clip(RoundedCornerShape(MediumCornerRadius))
-                    .background(color = colorResource(id = R.color.holo_blue_light))
+                    .background(color = colorResource(id = R.color.white))
             )
 
             Spacer(modifier = Modifier.height(LargeSpacerHeight))
@@ -177,19 +177,19 @@ fun QuizScreen(
                             text = "",
                             fraction = 0.43f,
                             fontSize = Dimens.SmallTextSize,
-                            borderColor = colorResource(id = R.color.holo_blue_light),
-                            containerColor = colorResource(id = R.color.holo_blue_light),
+                            borderColor = colorResource(id = R.color.white),
+                            containerColor = colorResource(id = R.color.white),
                         ) { }
                     }
 
                     ButtonBox(
                         text = buttonText[1],
                         padding = Dimens.SmallPadding,
-                        borderColor = colorResource(id = R.color.holo_purple),
-                        containerColor = if(pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_purple)
-                                         else colorResource(id = R.color.holo_blue_dark),
+                        borderColor = colorResource(id = R.color.holo_blue_dark),
+                        containerColor = if(pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_blue_dark)
+                                         else colorResource(id = R.color.white),
                         fraction = 1f,
-                        textColor = colorResource(id = R.color.white),
+                        textColor = colorResource(id = R.color.holo_purple),
                         fontSize = Dimens.SmallTextSize
                     ) {
                         if (pageState.currentPage == state.quizState.size - 1) {
