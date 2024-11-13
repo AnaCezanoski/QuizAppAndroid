@@ -40,4 +40,6 @@ sealed class Routes(val route : String) {
                 .replace("{$CORRECT_ANS_KEY}", correctAnswers.toString())
         }
     }
+
+    object LeaderboardScreen : Routes(route = "leaderboard_screen")
 }

@@ -81,9 +81,6 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-compiler:2.50")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-//    implementation ("com.google.dagger:hilt-android:2.49")
-//    kapt("com.google.dagger:hilt-compiler:2.45")
-//    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -97,4 +94,18 @@ dependencies {
 
     // Lottie Compose (Atualizado para a versão mais recente)
     implementation("com.airbnb.android:lottie-compose:6.0.0")
+
+    // ROOM
+    implementation("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+
+    // Para usar LiveData com ROOM
+    implementation("androidx.room:room-ktx:2.5.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Para o ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
 }

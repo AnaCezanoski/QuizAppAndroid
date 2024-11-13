@@ -52,8 +52,19 @@ import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 fun ScoreScreen(
     numOfQuestions: Int,
     numOfCorrectAnswer: Int,
-    navController: NavController
+    responseTimes: List<Long>,
+    navController: NavController,
+    leaderboardViewModel: LeaderboardViewModel = hiltViewModel()
 ) {
+    val maxScore = 1000
+    val timeFactor = 0.1
+
+    val timeScore = responseTimes.map { maxScore - (it * timeFactor).toInt() }
+        .filter { it > 0 }
+        .sum() / numOfQuestions
+
+    val finalScore = (numOfCorrectAnswer.toDouble() / numOfQuestions) * timeScore
+
     BackHandler {
         goToHome(navController)
     }
@@ -136,7 +147,7 @@ fun ScoreScreen(
                 Spacer(modifier = Modifier.height(Dimens.MediumSpacerHeight))
 
                 Text(
-                    text = "$scorePercentage% Score",
+                    text = "Your score: ${DecimalFormat("#.##").format(finalScore)}",
                     color = colorResource(id = R.color.purple_700),
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = Dimens.LargeTextSize,

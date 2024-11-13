@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.quizappandroid.ui.theme.presentation.home.HomeScreen
 import com.example.quizappandroid.ui.theme.presentation.home.HomeScreenViewModel
+import com.example.quizappandroid.ui.theme.presentation.leaderboard.LeaderboardScreen
 import com.example.quizappandroid.ui.theme.presentation.quiz.QuizScreen
 import com.example.quizappandroid.ui.theme.presentation.quiz.QuizViewModel
 import com.example.quizappandroid.ui.theme.presentation.score.ScoreScreen
@@ -71,12 +72,18 @@ fun SetNavGraph() {
         ) {
             val numOfQuestions = it.arguments?.getInt(NOQ_KEY)
             val numOfCorrectAns = it.arguments?.getInt(CORRECT_ANS_KEY)
+            val responseTimes = listOf(1200L, 1500L, 1100L)
 
             ScoreScreen(
                 numOfQuestions = numOfQuestions!!,
                 numOfCorrectAnswer = numOfCorrectAns!!,
+                responseTimes = responseTimes,
                 navController = navController
             )
+        }
+
+        composable(route = Routes.LeaderboardScreen.route) {
+            LeaderboardScreen()
         }
     }
 }
