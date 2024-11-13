@@ -1,7 +1,5 @@
 package com.example.quizappandroid.ui.theme.domain.di
 
-import com.example.quizappandroid.ui.theme.data.remote.QuizApi
-import com.example.quizappandroid.ui.theme.data.repository.QuizRepositoryImpl
 import com.example.quizappandroid.ui.theme.domain.repository.QuizRepository
 import com.example.quizappandroid.ui.theme.domain.usecases.GetQuizzesUseCases
 import dagger.Module
@@ -19,5 +17,4 @@ object DomainModule {
     fun provideGetQuizzesUseCases(quizRepository: QuizRepository) : GetQuizzesUseCases {
         return GetQuizzesUseCases(quizRepository)
     }
-
 }

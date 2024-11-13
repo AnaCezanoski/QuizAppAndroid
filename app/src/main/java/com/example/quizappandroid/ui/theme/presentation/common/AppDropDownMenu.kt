@@ -27,7 +27,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.quizappandroid.ui.theme.presentation.common.AppDropDownMenu
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.SmallSpacerHeight
 

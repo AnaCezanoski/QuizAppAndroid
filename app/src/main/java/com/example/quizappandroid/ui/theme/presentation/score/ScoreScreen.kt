@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -45,7 +45,7 @@ import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 //@Preview
 //@Composable
 //fun PrevScore() {
-//    ScoreScreen(numOfQuestions = 16, numOfCorrectAnswer = 3)
+//    ScoreScreen(numOfQuestions = 16, numOfCorrectAnswer = 3, navController = NavController(LocalContext.current))
 //}
 
 @Composable
@@ -117,7 +117,7 @@ fun ScoreScreen(
                     }
                 }
 
-                val scorePercentage = calculatePercentage(numOfCorrectAnswer, numOfQuestions)
+                val scorePercentage = if (numOfQuestions > 0) (numOfCorrectAnswer.toDouble() / numOfQuestions) * 100 else 0.0
                 LottieAnimation(
                     modifier = Modifier.size(Dimens.LargeLottieAnimSize),
                     composition = composition,

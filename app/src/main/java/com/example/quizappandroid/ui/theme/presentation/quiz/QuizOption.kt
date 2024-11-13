@@ -1,6 +1,5 @@
 package com.example.quizappandroid.ui.theme.presentation.quiz
 
-import android.util.Log
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.AnimationConstants.DefaultDurationMillis
 import androidx.compose.animation.core.LinearEasing
@@ -22,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -62,7 +60,7 @@ fun QuizOption(
     onOptionClick: () -> Unit,
     onUnselectOption: () -> Unit
 ) {
-    val optionTextColor = if (selected) colorResource(id = R.color.teal_200) else colorResource(id = com.example.quizappandroid.R.color.black)
+    val optionTextColor = if (selected) colorResource(id = R.color.teal_200) else colorResource(id = R.color.black)
     val transition = updateTransition(selected, label = "selected")
 
     val startColor = transition.animateColor(
@@ -92,14 +90,14 @@ fun QuizOption(
                         .size(SmallCircleShape)
                         .shadow(10.dp, CircleShape, clip = true)
                         .clip(CircleShape)
-                        .background(colorResource(id = com.example.quizappandroid.R.color.purple_700)),
+                        .background(colorResource(id = R.color.purple_700)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = optionNumber,
                         fontWeight = FontWeight.Bold,
                         fontSize = MediumTextSize,
-                        color = colorResource(id = com.example.quizappandroid.R.color.white),
+                        color = colorResource(id = R.color.white),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -123,14 +121,14 @@ fun QuizOption(
                     modifier = Modifier
                         .shadow(10.dp, CircleShape, clip = true)
                         .clip(CircleShape)
-                        .background(colorResource(id = com.example.quizappandroid.R.color.white)),
+                        .background(colorResource(id = R.color.white)),
                     contentAlignment = Alignment.Center
                 ) {
                     IconButton(onClick = { onUnselectOption() }) {
                         Icon(
-                            painter = painterResource(id = com.example.quizappandroid.R.drawable.baseline_close_24),
+                            painter = painterResource(id = R.drawable.baseline_close_24),
                             contentDescription = "close",
-                            tint = colorResource(id = com.example.quizappandroid.R.color.purple_700)
+                            tint = colorResource(id = R.color.purple_700)
                         )
                     }
                 }

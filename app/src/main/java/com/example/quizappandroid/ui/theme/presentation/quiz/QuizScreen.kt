@@ -1,7 +1,6 @@
-package com.example.quizappandroid.ui.theme.presentation.quiz.component
+package com.example.quizappandroid.ui.theme.presentation.quiz
 
 import android.R
-import android.R.attr.text
 import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -9,35 +8,33 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.remember
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.example.quizappandroid.ui.theme.domain.model.Quiz
 import com.example.quizappandroid.ui.theme.presentation.common.ButtonBox
 import com.example.quizappandroid.ui.theme.presentation.common.QuizAppBar
 import com.example.quizappandroid.ui.theme.presentation.nav_graph.Routes
-import com.example.quizappandroid.ui.theme.presentation.quiz.EventQuizScreen
-import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
+import com.example.quizappandroid.ui.theme.presentation.quiz.component.QuizInterface
+import com.example.quizappandroid.ui.theme.presentation.quiz.component.ShimmerEffectQuizInterface
 import com.example.quizappandroid.ui.theme.presentation.util.Constants
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.LargeSpacerHeight
@@ -47,14 +44,16 @@ import kotlinx.coroutines.launch
 
 //@Preview
 //@Composable
-//fun Prevquiz() {
+//fun PrevQuiz() {
 //    QuizScreen(
 //        numOfQuiz = 10,
 //        quizCategory = "General Knowledge",
 //        quizDifficulty = "Easy",
 //        quizType = "easy",
 //        event = {},
-//        state = StateQuizScreen())
+//        state = StateQuizScreen(),
+//        navController = NavController(LocalContext.current)
+//    )
 //}
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -77,7 +76,7 @@ fun QuizScreen(
         }
     }
 
-    LaunchedEffect(key1 = Unit) {
+    LaunchedEffect(key1 = quizDifficulty) {
         val difficulty = when (quizDifficulty) {
             "Medium" -> "medium"
             "Hard" -> "hard"
@@ -93,7 +92,7 @@ fun QuizScreen(
     }
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
     ) {
         QuizAppBar(quizCategory = quizCategory) {
             navController.navigate(Routes.HomeScreen.route) {
@@ -170,8 +169,7 @@ fun QuizScreen(
                         ) {
                             scope.launch { pageState.animateScrollToPage(pageState.currentPage - 1) }
                         }
-                    }
-                    else{
+                    } else {
                         ButtonBox(
                             text = "",
                             fraction = 0.43f,
@@ -185,8 +183,8 @@ fun QuizScreen(
                         text = buttonText[1],
                         padding = Dimens.SmallPadding,
                         borderColor = colorResource(id = R.color.holo_blue_dark),
-                        containerColor = if(pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_blue_dark)
-                                         else colorResource(id = R.color.holo_blue_dark),
+                        containerColor = if (pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_blue_dark)
+                        else colorResource(id = R.color.holo_blue_dark),
                         fraction = 1f,
                         textColor = colorResource(id = R.color.white),
                         fontSize = Dimens.MediumTextSize
@@ -194,8 +192,7 @@ fun QuizScreen(
                         if (pageState.currentPage == state.quizState.size - 1) {
                             navController.navigate(Routes.ScoreScreen.passNumQuestionsAndCorrectAns(state.quizState.size, state.score))
 
-                        }
-                        else {
+                        } else {
                             scope.launch { pageState.animateScrollToPage(pageState.currentPage + 1) }
                         }
                     }

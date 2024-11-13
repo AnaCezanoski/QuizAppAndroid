@@ -40,6 +40,4 @@ object Dimens {
     val MediumBoxHeight = 60.dp
 
     val SmallBorderWidth = 10.dp
-
-
 }

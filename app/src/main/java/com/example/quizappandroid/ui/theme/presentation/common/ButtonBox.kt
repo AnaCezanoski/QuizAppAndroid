@@ -47,7 +47,6 @@ fun PrevButtonBox() {
 
 @Composable
 fun ButtonBox(
-    modifier: Modifier = Modifier,
     text: String,
     padding: Dp = Dimens.SmallPadding,
     borderColor : Color = colorResource(id = R.color.purple_700),

@@ -1,4 +1,4 @@
-package com.example.quizappandroid.ui.theme.presentation.quiz.component
+package com.example.quizappandroid.ui.theme.presentation.quiz
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
@@ -7,9 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.quizappandroid.ui.theme.commom.Resource
 import com.example.quizappandroid.ui.theme.domain.model.Quiz
 import com.example.quizappandroid.ui.theme.domain.usecases.GetQuizzesUseCases
-import com.example.quizappandroid.ui.theme.presentation.quiz.EventQuizScreen
-import com.example.quizappandroid.ui.theme.presentation.quiz.QuizState
-import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

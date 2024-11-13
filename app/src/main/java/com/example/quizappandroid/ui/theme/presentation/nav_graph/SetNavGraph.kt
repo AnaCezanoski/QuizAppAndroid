@@ -9,11 +9,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.quizappandroid.ui.theme.presentation.nav_graph.Routes
 import com.example.quizappandroid.ui.theme.presentation.home.HomeScreen
 import com.example.quizappandroid.ui.theme.presentation.home.HomeScreenViewModel
-import com.example.quizappandroid.ui.theme.presentation.quiz.component.QuizScreen
-import com.example.quizappandroid.ui.theme.presentation.quiz.component.QuizViewModel
+import com.example.quizappandroid.ui.theme.presentation.quiz.QuizScreen
+import com.example.quizappandroid.ui.theme.presentation.quiz.QuizViewModel
 import com.example.quizappandroid.ui.theme.presentation.score.ScoreScreen
 
 @Composable
