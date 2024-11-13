@@ -10,10 +10,12 @@ import com.example.quizappandroid.ui.theme.domain.usecases.GetQuizzesUseCases
 import com.example.quizappandroid.ui.theme.presentation.quiz.EventQuizScreen
 import com.example.quizappandroid.ui.theme.presentation.quiz.QuizState
 import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizzesUseCases) : ViewModel() {
 
     private val _quizList = MutableStateFlow(StateQuizScreen())

@@ -50,14 +50,14 @@ fun QuizInterface(
                 Text(
                     modifier = Modifier.weight(1f),
                     text = "$qNumber.",
-                    color = colorResource(id = com.example.quizappandroid.R.color.holo_purple),
+                    color = colorResource(id = com.example.quizappandroid.R.color.purple_700),
                     fontSize = Dimens.SmallTextSize
                 )
 
                 Text(
                     modifier = Modifier.weight(9f),
                     text = question,
-                    color = colorResource(id = com.example.quizappandroid.R.color.holo_purple),
+                    color = colorResource(id = com.example.quizappandroid.R.color.purple_700),
                     fontSize = Dimens.MediumTextSize
                 )
             }

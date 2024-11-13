@@ -63,7 +63,7 @@ fun QuizOption(
     onOptionClick: () -> Unit,
     onUnselectOption: () -> Unit
 ) {
-    val optionTextColor = if (selected) colorResource(id = R.color.holo_purple) else colorResource(id = com.example.quizappandroid.R.color.black)
+    val optionTextColor = if (selected) colorResource(id = R.color.purple_700) else colorResource(id = com.example.quizappandroid.R.color.black)
     val transition = updateTransition(selected, label = "selected")
 
     val startColor = transition.animateColor(
@@ -71,7 +71,7 @@ fun QuizOption(
         label = "startColor"
     ) { selectedBox ->
         if (selectedBox) colorResource(id = R.color.purple_700)
-        else colorResource(id = R.color.holo_purple)
+        else colorResource(id = R.color.purple_200)
     }.value
 
     Box(
