@@ -24,14 +24,14 @@ fun QuizAppBar(
         modifier = Modifier.fillMaxWidth(),
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = colorResource(id = R.color.purple_700),
-            actionIconContentColor = colorResource(id = R.color.purple_700),
-            navigationIconContentColor = colorResource(id = R.color.purple_700),
+            actionIconContentColor = colorResource(id = R.color.white),
+            navigationIconContentColor = colorResource(id = R.color.white),
         ),
 
         title = {
             Text(
                 text = quizCategory,
-                color = colorResource(id = R.color.purple_700),
+                color = colorResource(id = R.color.white),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

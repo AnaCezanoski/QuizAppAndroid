@@ -133,7 +133,6 @@ fun QuizScreen(
 
             Spacer(modifier = Modifier.height(LargeSpacerHeight))
 
-            // Inicialize o pager state fora do if para evitar problemas com remember
             val pageState = rememberPagerState(initialPage = 0) { state.quizState.size }
 
             if (quizFetched(state)) {
@@ -167,7 +166,7 @@ fun QuizScreen(
                             text = "Previous",
                             padding = Dimens.SmallPadding,
                             fraction = 0.43f,
-                            fontSize = Dimens.SmallTextSize
+                            fontSize = Dimens.MediumTextSize
                         ) {
                             scope.launch { pageState.animateScrollToPage(pageState.currentPage - 1) }
                         }
@@ -187,10 +186,10 @@ fun QuizScreen(
                         padding = Dimens.SmallPadding,
                         borderColor = colorResource(id = R.color.holo_blue_dark),
                         containerColor = if(pageState.currentPage == state.quizState.size - 1) colorResource(id = R.color.holo_blue_dark)
-                                         else colorResource(id = R.color.white),
+                                         else colorResource(id = R.color.holo_blue_dark),
                         fraction = 1f,
-                        textColor = colorResource(id = R.color.holo_purple),
-                        fontSize = Dimens.SmallTextSize
+                        textColor = colorResource(id = R.color.white),
+                        fontSize = Dimens.MediumTextSize
                     ) {
                         if (pageState.currentPage == state.quizState.size - 1) {
                             navController.navigate(Routes.ScoreScreen.passNumQuestionsAndCorrectAns(state.quizState.size, state.score))

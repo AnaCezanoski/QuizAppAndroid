@@ -35,7 +35,6 @@ import com.example.quizappandroid.ui.theme.presentation.util.Dimens.MediumTextSi
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.SmallCircleShape
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.SmallSpacerWidth
 
-// Adicione a função noRippleClickable aqui
 fun Modifier.noRippleClickable(onClick: () -> Unit): Modifier = composed {
     clickable(
         interactionSource = remember { MutableInteractionSource() },
@@ -63,7 +62,7 @@ fun QuizOption(
     onOptionClick: () -> Unit,
     onUnselectOption: () -> Unit
 ) {
-    val optionTextColor = if (selected) colorResource(id = R.color.purple_700) else colorResource(id = com.example.quizappandroid.R.color.black)
+    val optionTextColor = if (selected) colorResource(id = R.color.teal_200) else colorResource(id = com.example.quizappandroid.R.color.black)
     val transition = updateTransition(selected, label = "selected")
 
     val startColor = transition.animateColor(
@@ -71,7 +70,7 @@ fun QuizOption(
         label = "startColor"
     ) { selectedBox ->
         if (selectedBox) colorResource(id = R.color.purple_700)
-        else colorResource(id = R.color.purple_200)
+        else colorResource(id = R.color.teal_200)
     }.value
 
     Box(
@@ -100,7 +99,7 @@ fun QuizOption(
                         text = optionNumber,
                         fontWeight = FontWeight.Bold,
                         fontSize = MediumTextSize,
-                        color = colorResource(id = com.example.quizappandroid.R.color.holo_purple),
+                        color = colorResource(id = com.example.quizappandroid.R.color.white),
                         textAlign = TextAlign.Center
                     )
                 }
@@ -124,7 +123,7 @@ fun QuizOption(
                     modifier = Modifier
                         .shadow(10.dp, CircleShape, clip = true)
                         .clip(CircleShape)
-                        .background(colorResource(id = com.example.quizappandroid.R.color.holo_purple)),
+                        .background(colorResource(id = com.example.quizappandroid.R.color.white)),
                     contentAlignment = Alignment.Center
                 ) {
                     IconButton(onClick = { onUnselectOption() }) {

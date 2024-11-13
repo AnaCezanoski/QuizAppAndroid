@@ -76,7 +76,7 @@ fun ScoreScreen(
                 Icon(
                     painter = painterResource(id = R.drawable.baseline_close_24),
                     contentDescription = "close",
-                    tint = colorResource(id = R.color.holo_purple)
+                    tint = colorResource(id = R.color.purple_700)
                 )
             }
         }
@@ -88,7 +88,7 @@ fun ScoreScreen(
                 .fillMaxWidth()
                 .height(500.dp)
                 .clip(RoundedCornerShape(Dimens.MediumCornerRadius))
-                .background(colorResource(id = R.color.holo_purple)),
+                .background(colorResource(id = R.color.teal_200)),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -109,7 +109,7 @@ fun ScoreScreen(
                     withStyle(style = SpanStyle(color = Color.Black)) {
                         append(" and from that ")
                     }
-                    withStyle(style = SpanStyle(color = colorResource(id = R.color.holo_teal_dark))) {
+                    withStyle(style = SpanStyle(color = colorResource(id = R.color.purple_700))) {
                         append("$numOfCorrectAnswer answers")
                     }
                     withStyle(style = SpanStyle(color = Color.Black)) {
@@ -137,7 +137,7 @@ fun ScoreScreen(
 
                 Text(
                     text = "$scorePercentage% Score",
-                    color = colorResource(id = R.color.holo_teal_dark),
+                    color = colorResource(id = R.color.purple_700),
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = Dimens.LargeTextSize,
                     fontWeight = FontWeight.Bold
@@ -164,35 +164,6 @@ fun ScoreScreen(
                 )
                 Spacer(modifier = Modifier.height(Dimens.LargeSpacerHeight))
 
-//                Row(
-//                    verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    Text(
-//                        color = Color.Black,
-//                        text = "Share with us:",
-//                        style = MaterialTheme.typography.titleMedium,
-//                        fontSize = Dimens.SmallTextSize,
-//                    )
-//
-//                    Spacer(modifier = Modifier.width(Dimens.SmallSpacerWidth))
-//                    Icon(
-//                        modifier = Modifier.size(30.dp),
-//                        painter = painterResource(id = R.drawable.instagram),
-//                        contentDescription = "Instagram"
-//                    )
-//                    Spacer(modifier = Modifier.width(Dimens.SmallSpacerWidth))
-//                    Icon(
-//                        modifier = Modifier.size(30.dp),
-//                        painter = painterResource(id = R.drawable.facebook),
-//                        contentDescription = "Facebook"
-//                    )
-//                    Spacer(modifier = Modifier.width(Dimens.SmallSpacerWidth))
-//                    Icon(
-//                        modifier = Modifier.size(30.dp),
-//                        painter = painterResource(id = R.drawable.whatsapp),
-//                        contentDescription = "WhatsApp"
-//                    )
-//                }
             }
         }
     }
