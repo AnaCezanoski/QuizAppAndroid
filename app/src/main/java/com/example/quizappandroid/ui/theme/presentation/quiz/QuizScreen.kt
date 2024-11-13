@@ -3,6 +3,7 @@ package com.example.quizappandroid.ui.theme.presentation.quiz.component
 import android.R
 import android.R.attr.text
 import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,9 +31,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.quizappandroid.ui.theme.domain.model.Quiz
 import com.example.quizappandroid.ui.theme.presentation.common.ButtonBox
 import com.example.quizappandroid.ui.theme.presentation.common.QuizAppBar
+import com.example.quizappandroid.ui.theme.presentation.nav_graph.Routes
 import com.example.quizappandroid.ui.theme.presentation.quiz.EventQuizScreen
 import com.example.quizappandroid.ui.theme.presentation.quiz.StateQuizScreen
 import com.example.quizappandroid.ui.theme.presentation.util.Constants
@@ -42,17 +45,17 @@ import com.example.quizappandroid.ui.theme.presentation.util.Dimens.MediumCorner
 import com.example.quizappandroid.ui.theme.presentation.util.Dimens.MediumPadding
 import kotlinx.coroutines.launch
 
-@Preview
-@Composable
-fun Prevquiz() {
-    QuizScreen(
-        numOfQuiz = 10,
-        quizCategory = "General Knowledge",
-        quizDifficulty = "Easy",
-        quizType = "easy",
-        event = {},
-        state = StateQuizScreen())
-}
+//@Preview
+//@Composable
+//fun Prevquiz() {
+//    QuizScreen(
+//        numOfQuiz = 10,
+//        quizCategory = "General Knowledge",
+//        quizDifficulty = "Easy",
+//        quizType = "easy",
+//        event = {},
+//        state = StateQuizScreen())
+//}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -62,8 +65,18 @@ fun QuizScreen(
     quizDifficulty: String,
     quizType: String,
     event: (EventQuizScreen) -> Unit,
-    state: StateQuizScreen
+    state: StateQuizScreen,
+    navController: NavController
 ) {
+
+    BackHandler {
+        navController.navigate(Routes.HomeScreen.route) {
+            popUpTo(Routes.HomeScreen.route) {
+                inclusive = true
+            }
+        }
+    }
+
     LaunchedEffect(Unit) {
         val difficulty = when (quizDifficulty) {
             "Medium" -> "medium"
@@ -82,7 +95,13 @@ fun QuizScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        QuizAppBar(quizCategory = quizCategory) {}
+        QuizAppBar(quizCategory = quizCategory) {
+            navController.navigate(Routes.HomeScreen.route) {
+                popUpTo(Routes.HomeScreen.route) {
+                    inclusive = true
+                }
+            }
+        }
 
         Column(
             modifier = Modifier
@@ -174,8 +193,7 @@ fun QuizScreen(
                         fontSize = Dimens.SmallTextSize
                     ) {
                         if (pageState.currentPage == state.quizState.size - 1) {
-                            // Ação para o botão "Submit"
-                            Log.d("score", state.score.toString())
+                            navController.navigate(Routes.ScoreScreen.passNumQuestionsAndCorrectAns(state.quizState.size, state.score))
 
                         }
                         else {
