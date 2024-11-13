@@ -73,6 +73,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(MediumSpacerHeight))
 
         ButtonBox(text = "Generate quiz", padding = MediumPadding) {
+            Log.d("quiz detail", "${state.numberOfQuiz}")
             navController.navigate(
                 route = Routes.QuizScreen.passQuizParams(
                     state.numberOfQuiz,

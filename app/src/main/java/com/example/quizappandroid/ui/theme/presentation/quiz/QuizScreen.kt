@@ -77,7 +77,7 @@ fun QuizScreen(
         }
     }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = Unit) {
         val difficulty = when (quizDifficulty) {
             "Medium" -> "medium"
             "Hard" -> "hard"

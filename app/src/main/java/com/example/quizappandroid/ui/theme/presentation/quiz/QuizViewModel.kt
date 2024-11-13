@@ -69,7 +69,9 @@ class QuizViewModel @Inject constructor(private val getQuizzesUseCases: GetQuizz
         viewModelScope.launch {
             getQuizzesUseCases(amount, category, difficulty, type).collect { resource ->
                 when (resource) {
-                    is Resource.Loading -> { _quizList.value = StateQuizScreen(isLoading = true)
+                    is Resource.Loading -> {
+                        Log.d("quiz", "Loading...")
+                        _quizList.value = StateQuizScreen(isLoading = true)
                     }
 
                     is Resource.Success -> {
